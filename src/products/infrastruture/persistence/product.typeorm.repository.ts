@@ -31,10 +31,10 @@ export class ProductTypeormRepository
     return await this.productRepository.findOne({ where: { id } });
   }
 
-  async updateProduct(id: string, product: Product): Promise<Product> {
+  async updateProductById(id: string, product: Product): Promise<Product> {
     return await this.productRepository.save({ ...product, id });
   }
-  async deleteProduct(id: string): Promise<void> {
+  async deleteProductById(id: string): Promise<void> {
     await this.productRepository.delete(id);
   }
 }
