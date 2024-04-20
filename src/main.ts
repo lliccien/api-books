@@ -9,9 +9,9 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const logger = new Logger('NestApplication');
 
-  await app.listen(configService.get('PORT') || 3000, async () => {
+  await app.listen(configService.get('PORT'), async () => {
     logger.log(
-      `Server is running on http://localhost:${configService.get('PORT') || 3000}`,
+      `Server is running on http://localhost:${configService.get('PORT')}`,
     );
   });
 }
