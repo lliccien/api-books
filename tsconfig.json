@@ -20,7 +20,9 @@
     "paths": {
       "@Config/*": ["src/config/*"],
       "@Database/*": ["src/database/*"],
-      "@Products/*": ["src/products/*"]
+      "@Products/*": ["src/products/*"],
+      "@Common/*": ["src/common/*"],
+      "@Users/*": ["src/users/*"]
     }
   }
 }
