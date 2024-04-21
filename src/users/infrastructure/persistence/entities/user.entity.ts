@@ -21,8 +21,8 @@ export class UserEntity {
   @Column()
   password: string;
 
-  @Column({ default: Role.USER })
-  role: Role;
+  @Column({ default: 'user' })
+  role: string;
 
   @CreateDateColumn()
   createdAt: Date;
