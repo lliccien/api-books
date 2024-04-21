@@ -1,4 +1,5 @@
 import { MappersService } from '@Common/application/mappers.service';
+import { Product } from '@Products/domain/product';
 import { ProductRepository } from '@Products/domain/product.repository';
 import { Inject, Injectable } from '@nestjs/common';
 
@@ -10,12 +11,13 @@ export class FindProductByIdService {
     private readonly mappersService: MappersService,
   ) {}
 
-  async execute(id: string): Promise<any> {
+  async execute(id: string): Promise<Product> {
     try {
       const productFound = await this.productRepository.findProductById(id);
       if (!productFound) {
         throw new Error('Product not found');
       }
+      return this.mappersService.entityToClass(productFound, Product);
     } catch (error) {
       throw new Error(error);
     }

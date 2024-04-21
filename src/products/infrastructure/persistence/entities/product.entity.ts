@@ -17,9 +17,9 @@ export class ProductEntity {
   @Column()
   stock: number;
 
-  @Column()
+  @Column({ nullable: true })
   cover: string;
 
-  @Column('simple-array')
+  @Column({ type: 'simple-array', nullable: true })
   attachments: string[];
 }

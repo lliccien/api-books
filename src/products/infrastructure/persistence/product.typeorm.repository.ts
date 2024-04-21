@@ -32,7 +32,9 @@ export class ProductTypeormRepository
   }
 
   async updateProductById(id: string, product: Product): Promise<Product> {
-    return await this.productRepository.save({ ...product, id });
+    await this.productRepository.save({ id, ...product });
+
+    return this.findProductById(id);
   }
   async deleteProductById(id: string): Promise<void> {
     await this.productRepository.delete(id);

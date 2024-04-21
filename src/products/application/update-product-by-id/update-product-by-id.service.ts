@@ -1,4 +1,5 @@
 import { MappersService } from '@Common/application/mappers.service';
+import { UpdateProductDto } from '@Products/controllers/dtos/update-product-dto';
 import { Product } from '@Products/domain/product';
 import { ProductRepository } from '@Products/domain/product.repository';
 import { Inject, Injectable } from '@nestjs/common';
@@ -10,15 +11,20 @@ export class UpdateProductByIdService {
     private readonly productRepository: ProductRepository,
     private readonly mappersService: MappersService,
   ) {}
-  async execute(id: string, productDto: any): Promise<Product> {
+  async execute(id: string, product: UpdateProductDto): Promise<Product> {
     try {
       const productFound = await this.productRepository.findProductById(id);
       if (!productFound) {
         throw new Error('Product not found');
       }
+
+      if (Object.keys(product).length === 0) {
+        throw new Error('Product data is required');
+      }
+
       const updatedProduct = await this.productRepository.updateProductById(
         id,
-        productDto,
+        product,
       );
 
       return this.mappersService.entityToClass(updatedProduct, Product);

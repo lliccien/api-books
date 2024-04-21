@@ -29,7 +29,7 @@ const production: DataSourceOptions = {
 
 const development: DataSourceOptions = {
   type: 'sqlite',
-  database: `../../data/development.db`,
+  database: `./data/development.db`,
   synchronize: true,
   dropSchema: false,
   logging: false,
@@ -57,6 +57,8 @@ export const dataSourceOptions: DataSourceOptions = (() => {
   }
 
   if (process.env.NODE_ENV === ENVIRONMENTS.DEVELOPMENT) {
+    console.log('development');
+
     return development;
   }
 
