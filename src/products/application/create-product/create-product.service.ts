@@ -1,5 +1,5 @@
 import { MappersService } from '@Common/application/mappers.service';
-import { Product } from '@Products/domain/product';
+import { Product } from '@Products/domain/product.domain';
 import { ProductRepository } from '@Products/domain/product.repository';
 import { Inject, Injectable } from '@nestjs/common';
 

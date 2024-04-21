@@ -23,11 +23,8 @@ export class ConfigService {
   private validateInput(envConfig: EnvConfig): EnvConfig {
     const envVarsSchema: Joi.ObjectSchema = Joi.object({
       NODE_ENV: Joi.string().valid('development', 'production', 'test'),
-      PORT: Joi.number().when('NODE_ENV', {
-        is: Joi.string().equal('production'),
-        then: Joi.number().required(),
-        otherwise: Joi.number().optional(),
-      }),
+      PORT: Joi.number().required(),
+      HOST_API: Joi.string().required(),
       DB_HOST: Joi.string().when('NODE_ENV', {
         is: Joi.string().equal('production'),
         then: Joi.string().required(),

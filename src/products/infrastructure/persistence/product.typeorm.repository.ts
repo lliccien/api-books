@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 import { ProductEntity } from './entities/product.entity';
 import { ProductRepository } from '@Products/domain/product.repository';
-import { Product } from '@Products/domain/product';
+import { Product } from '@Products/domain/product.domain';
 import { InjectRepository } from '@nestjs/typeorm';
 
 export class ProductTypeormRepository

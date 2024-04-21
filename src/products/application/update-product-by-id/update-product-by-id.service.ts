@@ -1,6 +1,6 @@
 import { MappersService } from '@Common/application/mappers.service';
 import { UpdateProductDto } from '@Products/controllers/dtos/update-product-dto';
-import { Product } from '@Products/domain/product';
+import { Product } from '@Products/domain/product.domain';
 import { ProductRepository } from '@Products/domain/product.repository';
 import { Inject, Injectable } from '@nestjs/common';
 

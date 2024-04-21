@@ -12,6 +12,10 @@ import { UpdateProductByIdPatchController } from './controllers/update-product-b
 import { DeleteProductByIdDeleteController } from './controllers/delete-product-by-id.delete/delete-product-by-id.delete.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductEntity } from './infrastructure/persistence/entities/product.entity';
+import { UploadCoverPostController } from './controllers/upload-cover.post/upload-cover.post.controller';
+import { UploadAttachmentsPostController } from './controllers/upload-attachments.post/upload-attachments.post.controller';
+import { ShowProductCoverGetController } from './controllers/show-product-cover.get/show-product-cover.get.controller';
+import { UploadFileService } from './application/upload-file/upload-file.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([ProductEntity])],
@@ -26,6 +30,7 @@ import { ProductEntity } from './infrastructure/persistence/entities/product.ent
     FindProductByIdService,
     UpdateProductByIdService,
     DeleteProductByIdService,
+    UploadFileService,
   ],
   controllers: [
     CreateProductPostController,
@@ -33,6 +38,9 @@ import { ProductEntity } from './infrastructure/persistence/entities/product.ent
     FindProductByIdGetController,
     UpdateProductByIdPatchController,
     DeleteProductByIdDeleteController,
+    UploadCoverPostController,
+    UploadAttachmentsPostController,
+    ShowProductCoverGetController,
   ],
 })
 export class ProductsModule {}
