@@ -16,9 +16,10 @@ import { UploadCoverPostController } from './controllers/upload-cover.post/uploa
 import { UploadAttachmentsPostController } from './controllers/upload-attachments.post/upload-attachments.post.controller';
 import { ShowProductCoverGetController } from './controllers/show-product-cover.get/show-product-cover.get.controller';
 import { UploadFileService } from './application/upload-file/upload-file.service';
+import { UsersModule } from '@Users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ProductEntity])],
+  imports: [TypeOrmModule.forFeature([ProductEntity]), UsersModule],
   providers: [
     {
       provide: 'IProductRepository',

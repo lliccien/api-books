@@ -1,3 +1,4 @@
+import { User } from '@Users/domain/user.domain';
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateProductDto {
@@ -26,4 +27,7 @@ export class CreateProductDto {
   @IsString({ each: true })
   @IsNotEmpty()
   attachments: string[];
+
+  @IsOptional()
+  owner: User;
 }

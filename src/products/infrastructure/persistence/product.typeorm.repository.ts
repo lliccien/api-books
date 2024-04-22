@@ -23,8 +23,14 @@ export class ProductTypeormRepository
     return await this.productRepository.save(product);
   }
 
-  async findAllProducts(): Promise<Product[]> {
-    return await this.productRepository.find();
+  async findAllProducts(owner?: string): Promise<Product[]> {
+    if (owner === '') {
+      return await this.productRepository.find();
+    }
+
+    return await this.productRepository.find({
+      where: { owner: { id: owner } },
+    });
   }
 
   async findProductById(id: string): Promise<Product> {

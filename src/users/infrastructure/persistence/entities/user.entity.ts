@@ -1,9 +1,11 @@
+import { ProductEntity } from '@Products/infrastructure/persistence/entities/product.entity';
 import { Role } from '@Users/domain/role.enum';
 import { Exclude } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -16,7 +18,7 @@ export class UserEntity {
   @Column()
   fullName: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Exclude()
@@ -31,4 +33,7 @@ export class UserEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(() => ProductEntity, (product) => product.owner)
+  products: ProductEntity[];
 }

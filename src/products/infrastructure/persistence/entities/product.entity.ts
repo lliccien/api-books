@@ -1,7 +1,10 @@
+import { User } from '@Users/domain/user.domain';
+import { UserEntity } from '@Users/infrastructure/persistence/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -34,4 +37,7 @@ export class ProductEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(() => UserEntity, (user) => user.products)
+  owner: UserEntity;
 }

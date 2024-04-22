@@ -1,3 +1,5 @@
+import { User } from '@Users/domain/user.domain';
+
 export class Product {
   id?: string;
   name?: string;
@@ -6,4 +8,5 @@ export class Product {
   stock?: number;
   cover?: string;
   attachments?: string[];
+  owner?: User;
 }

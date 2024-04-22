@@ -70,6 +70,6 @@ import { RolesGuard } from './guards/roles/roles.guard';
       useClass: RolesGuard,
     },
   ],
-  exports: [],
+  exports: [FindUserByIdService],
 })
 export class UsersModule {}
