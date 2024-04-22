@@ -8,5 +8,6 @@ services:
     environment:
       POSTGRES_PASSWORD: 123456
       POSTGRES_DB: bookstore
+      POSTGRES_USER: postgres
     ports:
       - 5432:5432
