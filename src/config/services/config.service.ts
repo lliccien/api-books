@@ -40,7 +40,12 @@ export class ConfigService {
         then: Joi.string().required(),
         otherwise: Joi.string().optional(),
       }),
-      DB_USER: Joi.string().when('NODE_ENV', {
+      DB_USERNAME: Joi.string().when('NODE_ENV', {
+        is: Joi.string().equal('production'),
+        then: Joi.string().required(),
+        otherwise: Joi.string().optional(),
+      }),
+      DB_NAME: Joi.string().when('NODE_ENV', {
         is: Joi.string().equal('production'),
         then: Joi.string().required(),
         otherwise: Joi.string().optional(),

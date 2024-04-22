@@ -9,7 +9,9 @@ describe('UpdateProductByIdPatchController', () => {
       controllers: [UpdateProductByIdPatchController],
     }).compile();
 
-    controller = module.get<UpdateProductByIdPatchController>(UpdateProductByIdPatchController);
+    controller = module.get<UpdateProductByIdPatchController>(
+      UpdateProductByIdPatchController,
+    );
   });
 
   it('should be defined', () => {

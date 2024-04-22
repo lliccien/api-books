@@ -6,7 +6,13 @@ import { CommonModule } from './common/common.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, ProductsModule, CommonModule, UsersModule],
+  imports: [
+    ConfigModule,
+    DatabaseModule,
+    ProductsModule,
+    CommonModule,
+    UsersModule,
+  ],
   controllers: [],
   providers: [],
 })

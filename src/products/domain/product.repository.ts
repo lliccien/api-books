@@ -1,4 +1,3 @@
-import { User } from '@Users/domain/user.domain';
 import { Product } from './product.domain';
 
 export interface ProductRepository {

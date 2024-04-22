@@ -24,6 +24,10 @@ const production: DataSourceOptions = {
   entities: [
     join(__dirname, '../**/infrastructure/persistence/entities/*.entity.ts'),
   ],
+  migrations: [join(__dirname, '../database/migrations/*.{ts,js}')],
+  // extra: {
+  //   ssl: true,
+  // },
   namingStrategy: new SnakeNamingStrategy(),
 };
 
@@ -36,6 +40,7 @@ const development: DataSourceOptions = {
   entities: [
     join(__dirname, '../**/infrastructure/persistence/entities/*.entity.ts'),
   ],
+  migrations: [join(__dirname, '../database/migrations/*.{ts,js}')],
   namingStrategy: new SnakeNamingStrategy(),
 };
 
@@ -48,6 +53,7 @@ const automatedTests: DataSourceOptions = {
   entities: [
     join(__dirname, '../**/infrastructure/persistence/entities/*.entity.ts'),
   ],
+  migrations: [join(__dirname, '../database/migrations/*.{ts,js}')],
   namingStrategy: new SnakeNamingStrategy(),
 };
 

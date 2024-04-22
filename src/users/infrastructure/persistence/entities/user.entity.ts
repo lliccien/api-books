@@ -1,5 +1,4 @@
 import { ProductEntity } from '@Products/infrastructure/persistence/entities/product.entity';
-import { Role } from '@Users/domain/role.enum';
 import { Exclude } from 'class-transformer';
 import {
   Column,

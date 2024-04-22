@@ -9,7 +9,9 @@ describe('UploadCoverPostController', () => {
       controllers: [UploadCoverPostController],
     }).compile();
 
-    controller = module.get<UploadCoverPostController>(UploadCoverPostController);
+    controller = module.get<UploadCoverPostController>(
+      UploadCoverPostController,
+    );
   });
 
   it('should be defined', () => {

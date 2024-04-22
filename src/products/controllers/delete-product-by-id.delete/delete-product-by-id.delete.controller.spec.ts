@@ -9,7 +9,9 @@ describe('DeleteProductByIdDeleteController', () => {
       controllers: [DeleteProductByIdDeleteController],
     }).compile();
 
-    controller = module.get<DeleteProductByIdDeleteController>(DeleteProductByIdDeleteController);
+    controller = module.get<DeleteProductByIdDeleteController>(
+      DeleteProductByIdDeleteController,
+    );
   });
 
   it('should be defined', () => {

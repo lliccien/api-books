@@ -1,4 +1,3 @@
-import { User } from '@Users/domain/user.domain';
 import { UserEntity } from '@Users/infrastructure/persistence/entities/user.entity';
 import {
   Column,
