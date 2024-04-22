@@ -1,4 +1,6 @@
 import { FindAllUsersService } from '@Users/application/find-all-users/find-all-users.service';
+import { Roles } from '@Users/decorators/roles/roles.decorator';
+import { Role } from '@Users/domain/role.enum';
 import { Controller, Get, Res } from '@nestjs/common';
 import { Response } from 'express';
 
@@ -6,6 +8,7 @@ import { Response } from 'express';
 export class FindAllUserController {
   constructor(private readonly findAllUsersService: FindAllUsersService) {}
 
+  @Roles(Role.ADMIN)
   @Get()
   async run(@Res() res: Response) {
     this.findAllUsersService

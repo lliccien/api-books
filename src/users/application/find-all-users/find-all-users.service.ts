@@ -15,7 +15,10 @@ export class FindAllUsersService {
     try {
       const users = await this.userRepository.findAllUsers();
 
-      return users.map((user) => this.mappersService.entityToClass(user, User));
+      return users.map((user) => {
+        delete user.password;
+        return this.mappersService.entityToClass(user, User);
+      });
     } catch (error) {
       throw new Error(error);
     }

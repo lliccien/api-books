@@ -13,15 +13,38 @@ import { FindAllUserController } from './controllers/find-all-user/find-all-user
 import { FindUserByIdController } from './controllers/find-user-by-id/find-user-by-id.controller';
 import { UpdateUserByIdController } from './controllers/update-user-by-id/update-user-by-id.controller';
 import { DeleteUserByIdController } from './controllers/delete-user-by-id/delete-user-by-id.controller';
+import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from '@Config/config.module';
+import { ConfigService } from '@Config/services/config.service';
+import { TokenService } from './infrastructure/auth/token/token.service';
+import { SignInController } from './controllers/auth/sign-in/sign-in.controller';
+import { SignUpController } from './controllers/auth/sign-up/sign-up.controller';
+import { SignUpService } from './application/auth/sign-up/sign-up.service';
+import { SignInService } from './application/auth/sign-in/sign-in.service';
+import { AuthGuard } from './guards/auth/auth.guard';
+import { RolesGuard } from './guards/roles/roles.guard';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserEntity])],
+  imports: [
+    TypeOrmModule.forFeature([UserEntity]),
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService) => ({
+        secret: configService.get('JWT_SECRET'),
+        signOptions: { expiresIn: configService.get('JWT_EXPIRES_IN') },
+        global: true,
+      }),
+      inject: [ConfigService],
+    }),
+  ],
   controllers: [
     CreateUserController,
     FindAllUserController,
     FindUserByIdController,
     UpdateUserByIdController,
     DeleteUserByIdController,
+    SignInController,
+    SignUpController,
   ],
   providers: [
     {
@@ -35,6 +58,17 @@ import { DeleteUserByIdController } from './controllers/delete-user-by-id/delete
     FindUserByEmailService,
     UpdateUserByIdService,
     DeleteUserByIdService,
+    TokenService,
+    SignUpService,
+    SignInService,
+    {
+      provide: 'APP_GUARD',
+      useClass: AuthGuard,
+    },
+    {
+      provide: 'APP_GUARD',
+      useClass: RolesGuard,
+    },
   ],
   exports: [],
 })

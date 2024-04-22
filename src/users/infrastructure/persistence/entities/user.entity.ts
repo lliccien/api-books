@@ -1,4 +1,5 @@
 import { Role } from '@Users/domain/role.enum';
+import { Exclude } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
@@ -18,6 +19,7 @@ export class UserEntity {
   @Column()
   email: string;
 
+  @Exclude()
   @Column()
   password: string;
 

@@ -45,6 +45,8 @@ export class ConfigService {
         then: Joi.string().required(),
         otherwise: Joi.string().optional(),
       }),
+      JWT_SECRET: Joi.string().required(),
+      JWT_EXPIRES_IN: Joi.string().required(),
     });
 
     const { error, value: validatedEnvConfig } =

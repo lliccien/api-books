@@ -20,6 +20,8 @@ export class FindUserByIdService {
 
       const user = await this.userRepository.findUserById(id);
 
+      delete user.password;
+
       return this.mappersService.entityToClass(user, User);
     } catch (error) {
       throw new Error(error);

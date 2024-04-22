@@ -24,6 +24,8 @@ export class UpdateUserByIdService {
 
       const updateUser = await this.userRepository.updateUserById(id, user);
 
+      delete updateUser.password;
+
       return this.mappersService.entityToClass(updateUser, User);
     } catch (error) {
       throw new Error(error);

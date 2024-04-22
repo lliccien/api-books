@@ -9,11 +9,14 @@ import {
 } from '@nestjs/common';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { Response } from 'express';
+import { Roles } from '@Users/decorators/roles/roles.decorator';
+import { Role } from '@Users/domain/role.enum';
 
 @Controller('users')
 export class UpdateUserByIdController {
   constructor(private readonly updateUserById: UpdateUserByIdService) {}
 
+  @Roles(Role.ADMIN)
   @Patch(':id')
   async run(
     @Param('id', ParseUUIDPipe) id: string,

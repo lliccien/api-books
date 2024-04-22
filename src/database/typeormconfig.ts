@@ -57,8 +57,6 @@ export const dataSourceOptions: DataSourceOptions = (() => {
   }
 
   if (process.env.NODE_ENV === ENVIRONMENTS.DEVELOPMENT) {
-    console.log('development');
-
     return development;
   }
 

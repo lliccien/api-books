@@ -1,4 +1,6 @@
 import { DeleteUserByIdService } from '@Users/application/delete-user-by-id/delete-user-by-id.service';
+import { Roles } from '@Users/decorators/roles/roles.decorator';
+import { Role } from '@Users/domain/role.enum';
 import { Controller, Delete, Param, ParseUUIDPipe, Res } from '@nestjs/common';
 import { Response } from 'express';
 
@@ -6,6 +8,7 @@ import { Response } from 'express';
 export class DeleteUserByIdController {
   constructor(private readonly deleteUserByIdService: DeleteUserByIdService) {}
 
+  @Roles(Role.ADMIN)
   @Delete(':id')
   async run(@Param('id', ParseUUIDPipe) id: string, @Res() res: Response) {
     this.deleteUserByIdService
